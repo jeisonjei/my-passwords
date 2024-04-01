@@ -1,6 +1,7 @@
 # MyPasswords
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.0.
+Simple application for saving passwords locally in browser's local storage.
 
 ## Development server
 
