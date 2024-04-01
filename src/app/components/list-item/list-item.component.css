@@ -11,5 +11,24 @@
 .transparent{
     background-color: transparent;
     border: 0;
-    color: red;
+}
+.red{
+    color:red;
+}
+.slate{
+    color: var(--slate);
+}
+.copied-alert-hidden{
+    text-align: center;
+    background-color: transparent;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 10px;
+}
+.copied-alert-shown{
+    text-align: center;
+    background-color: var(--success);
+    padding: 0.5rem;
+    border-radius: 10px;
+
 }

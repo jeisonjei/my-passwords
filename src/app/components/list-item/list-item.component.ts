@@ -10,8 +10,16 @@ import { RecordService } from '../../services/record.service';
   styleUrl: './list-item.component.css'
 })
 export class ListItemComponent {
+  copied = false;
+  copy(arg0: string) {
+    navigator.clipboard.writeText(arg0);
+    this.copied = true;
+    setTimeout(() => {
+      this.copied = false;
+    }, 2000);
+  }
   constructor(private recordService: RecordService) { }
-  
+
   deleteRecord() {
     this.recordService.delete(this.recordItem);
   }
@@ -22,5 +30,5 @@ export class ListItemComponent {
 
     // Check if the string matches the URL pattern
     return urlPattern.test(str);
-}
+  }
 }

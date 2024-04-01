@@ -17,7 +17,7 @@ export class HeaderComponent implements AfterViewInit {
       document.documentElement.style.setProperty('--header-height', headerHeight);
       this.headerHeightCalculated.emit(headerHeight);
       
-    }, 10);
+    }, 50);
   }
 
 }
