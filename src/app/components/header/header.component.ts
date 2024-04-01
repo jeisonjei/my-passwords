@@ -1,4 +1,5 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterContentChecked, AfterViewChecked, AfterViewInit, Component, EventEmitter, Output } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -8,10 +9,15 @@ import { AfterViewInit, Component } from '@angular/core';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent implements AfterViewInit {
+  @Output() headerHeightCalculated: EventEmitter<string> = new EventEmitter<string>();
   ngAfterViewInit(): void {
-    var header = document.getElementById('header');
-    var headerHeight = header.offsetHeight;
-    document.documentElement.style.setProperty('--header-height', headerHeight + 'px');
+    setTimeout(() => {
+      var header = document.getElementById('header');
+      var headerHeight = window.getComputedStyle(header).getPropertyValue('height');
+      document.documentElement.style.setProperty('--header-height', headerHeight);
+      this.headerHeightCalculated.emit(headerHeight);
+      
+    }, 10);
   }
 
 }

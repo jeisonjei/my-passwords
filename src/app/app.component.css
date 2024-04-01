@@ -10,7 +10,7 @@
 .grid{
     display: grid;
     grid-template-columns: 1fr;
-    padding-top: 1rem;
+    padding-top: var(--grid-padding-top);
 }
 
 @media (min-width: 740px) {
@@ -24,7 +24,6 @@
     .content{
         padding-left:5rem;
         padding-right:5rem;
-        padding-top: calc(var(--header-height));
         display: flex;
         justify-content: center;
     

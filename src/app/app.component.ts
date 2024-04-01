@@ -1,4 +1,4 @@
-import { AfterViewChecked, AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./components/header/header.component";
 import { AddFormComponent } from "./components/add-form/add-form.component";
@@ -14,22 +14,21 @@ import { RecordService } from './services/record.service';
   imports: [RouterOutlet, HeaderComponent, AddFormComponent, ListComponent]
 })
 
-export class AppComponent implements OnInit, AfterViewInit, AfterViewChecked {
+export class AppComponent implements OnInit, AfterViewInit {
+  refreshPage(headerHeight: string) {
+    console.log(headerHeight);
+      }
   constructor(
     private recordService: RecordService
   ) { }
   records: RecordItem[] = [];
-  some = this.recordService.signal$.subscribe((recs:RecordItem[]) => this.records = recs);
+  some = this.recordService.signal$.subscribe((recs: RecordItem[]) => this.records = recs);
+
   ngOnInit(): void {
     this.records = this.recordService.list();
-    
+
   }
   ngAfterViewInit(): void {
-    var gridElem = document.querySelector('.grid') as HTMLElement;
-    var elementStyle = window.getComputedStyle(gridElem);
-    var elementPaddingTop = elementStyle.getPropertyValue('padding-top');
-    var elementHeight = elementStyle.getPropertyValue('height');
-    document.documentElement.style.setProperty('--grid-padding-top', elementPaddingTop);
   }
 
   addRecord($event: RecordItem) {
