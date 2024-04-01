@@ -16,5 +16,11 @@ export class ListItemComponent {
     this.recordService.delete(this.recordItem);
   }
   @Input() recordItem: RecordItem;
+  isLink(str) {
+    // Regular expression to match URLs
+    var urlPattern = /^(http(s)?:\/\/)?(www\.)?[a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/;
 
+    // Check if the string matches the URL pattern
+    return urlPattern.test(str);
+}
 }
