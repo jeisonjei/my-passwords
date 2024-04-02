@@ -6,6 +6,7 @@ import { RecordItem } from './models/interfaces';
 import { ListComponent } from "./components/list/list.component";
 import { RecordService } from './services/record.service';
 import { FocusDirective } from './directives/focus.directive';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -18,23 +19,37 @@ import { FocusDirective } from './directives/focus.directive';
 export class AppComponent implements OnInit, AfterViewInit {
 
   constructor(
-    private recordService: RecordService
+    private recordService: RecordService,
+    private title: Title
   ) { }
-  searchKeys: string[] = ['Escape'];
+
   @ViewChild('searchElem') searchElem: ElementRef<HTMLInputElement>;
+  searchKeys: string[] = ['Escape'];
   records: RecordItem[] = [];
   found: RecordItem[] = [];
   recordServiceSubscription = this.recordService.signal$.subscribe((recs: RecordItem[]) => {
-
     this.records = recs;
     this.search();
   });
   searchNow: boolean = false;
 
+
+  // ****************************************************************
   ngOnInit(): void {
     this.records = this.recordService.list();
-
+    this.title.setTitle('My Passwords');
   }
+
+  ngAfterViewInit(): void {
+    document.addEventListener('keydown', this.handleSearchKeydown.bind(this));
+  }
+
+  ngOnDestroy(): void {
+    document.removeEventListener('keydown', this.handleSearchKeydown.bind(this));
+  }
+
+  // ***************************************************************
+
 
   handleSearchKeydown(event: KeyboardEvent) {
     if (this.searchKeys.includes(event.key)) {
@@ -43,10 +58,6 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.search();
 
     }
-  }
-  ngAfterViewInit(): void {
-
-    document.addEventListener('keydown', this.handleSearchKeydown.bind(this))
   }
 
 

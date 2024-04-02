@@ -24,7 +24,7 @@ export class AddFormComponent implements AfterViewInit, OnDestroy {
   }
   handleEnterKeydown(event: KeyboardEvent): void {
     if (event.key === 'Enter') {
-      if (document.activeElement !== this.urlElem.nativeElement) {
+      if (document.activeElement !== this.urlElem.nativeElement && this.urlElem.nativeElement.value==='') {
         this.urlElem.nativeElement.focus();
       }
       else {
@@ -33,7 +33,7 @@ export class AddFormComponent implements AfterViewInit, OnDestroy {
 
     }
   }
-  @ViewChild('urlElem') urlElem!: ElementRef<HTMLElement>;
+  @ViewChild('urlElem') urlElem!: ElementRef<HTMLInputElement>;
   @Output() onSubmit: EventEmitter<RecordItem> = new EventEmitter();
   submit() {
     var record = { id: this.id.get(), url: this.url, username: this.username, password: this.password };
