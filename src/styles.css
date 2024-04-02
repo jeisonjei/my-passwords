@@ -181,7 +181,10 @@
 .d-block{
     display: block;
 }
-
+.overflow{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 
 body {
