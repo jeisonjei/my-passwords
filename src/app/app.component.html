@@ -6,7 +6,7 @@
     </div>
     <div>
       <div class="s-flex jcb mb-1">
-        <input placeholder="Поиск..." #searchElem type="text" name="search" id="" (input)="search(searchElem.value)">
+        <input placeholder="Поиск..." #searchElem type="text" name="search" id="" (input)="search()">
         <div>Всего {{records.length}} паролей</div>
       </div>
       @if(searchNow)
