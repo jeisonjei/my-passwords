@@ -1,4 +1,4 @@
-import { AfterContentChecked, AfterViewChecked, AfterViewInit, Component, EventEmitter, Output } from '@angular/core';
+import { AfterContentChecked, AfterViewChecked, AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -10,12 +10,12 @@ import { Subject } from 'rxjs';
 })
 export class HeaderComponent implements AfterViewInit {
   @Output() headerHeightCalculated: EventEmitter<string> = new EventEmitter<string>();
+  @ViewChild('headerElem') headerElem: ElementRef<HTMLDivElement>;
   ngAfterViewInit(): void {
     setTimeout(() => {
-      var header = document.getElementById('header');
-      var headerHeight = window.getComputedStyle(header).getPropertyValue('height');
+      var header = this.headerElem.nativeElement;
+      var headerHeight = header.offsetHeight+'px';
       document.documentElement.style.setProperty('--header-height', headerHeight);
-      this.headerHeightCalculated.emit(headerHeight);
       
     }, 50);
   }
