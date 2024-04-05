@@ -11,11 +11,25 @@
     --slate-light: #B3C1D1;
     --success: #C5EBAA;
 
-    --header-height:100px;
+    --header-height: 100px;
     --content-padding-bottom: 1rem;
     --grid-padding-top: 1rem;
     --download-button-height: 0;
 }
+
+a:link {
+    color: blue;
+}
+
+a:visited {
+    color: blue;
+}
+
+
+a:active {
+    color: red;
+}
+
 
 .flex {
     display: flex;
@@ -33,27 +47,35 @@
 .jce {
     justify-content: end;
 }
-.jcb{
+
+.jcb {
     justify-content: space-between;
 }
+
 .aic {
     align-items: center;
 }
-.p-025{
+
+.p-025 {
     padding: 0.25rem;
 }
-.p-05{
+
+.p-05 {
     padding: 0.5rem;
 }
-.ms-025{
+
+.ms-025 {
     margin: 0.25rem;
 }
-.ms-05{
+
+.ms-05 {
     margin-left: 0.5rem;
 }
-.ms-1{
+
+.ms-1 {
     margin-left: 1rem;
 }
+
 .mx-1 {
     margin-left: 1rem;
     margin-right: 1rem;
@@ -78,30 +100,36 @@
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
-.mt-1{
+
+.mt-1 {
     margin-top: 1rem;
 }
 
-.mt-2{
+.mt-2 {
     margin-top: 2rem;
 }
-.mt-3{
+
+.mt-3 {
     margin-top: 3rem;
 }
-.mt-4{
+
+.mt-4 {
     margin-top: 4rem;
 }
-.mt-5{
+
+.mt-5 {
     margin-top: 5rem;
 }
-.mb-05{
+
+.mb-05 {
     margin-bottom: 0.5rem;
 }
-.mb-1{
-    margin-bottom: 1rem;
-}   
 
-.mb-2{
+.mb-1 {
+    margin-bottom: 1rem;
+}
+
+.mb-2 {
     margin-bottom: 2rem;
 }
 
@@ -193,10 +221,12 @@
 .fs44 {
     font-size: 44px;
 }
-.d-block{
+
+.d-block {
     display: block;
 }
-.overflow{
+
+.overflow {
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -208,23 +238,25 @@ body {
     font-size: 1.25rem;
     color: var(--text)
 }
-input,button{
+
+input,
+button {
     font-family: "Marmelad", sans-serif;
     color: var(--text);
     font-size: 1.25rem;
-    
+
 }
 
-button{
+button {
     /* height: 2rem; */
     background-color: var(--slate-dark);
-    color:white;
+    color: white;
     border: solid 1px;
     border-radius: 5px;
     padding: 10px;
 }
 
-button:hover{
+button:hover {
     cursor: pointer;
     background-color: var(--slate);
 }

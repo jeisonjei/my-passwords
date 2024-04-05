@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewChecked, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { RecordItem } from '../../models/interfaces';
 import { RecordService } from '../../services/record.service';
 
@@ -9,7 +9,7 @@ import { RecordService } from '../../services/record.service';
   templateUrl: './list-item.component.html',
   styleUrl: './list-item.component.css'
 })
-export class ListItemComponent implements OnInit{
+export class ListItemComponent implements OnInit, OnChanges {
   copied = false;
   copy(arg0: string) {
     navigator.clipboard.writeText(arg0);
@@ -19,7 +19,7 @@ export class ListItemComponent implements OnInit{
     }, 2000);
   }
   constructor(private recordService: RecordService) { }
-  ngOnInit(): void {
+  ngOnChanges(changes: SimpleChanges): void {
     var source = this.recordItem.url.split(' ');
     var copy = Array.from(source);
     if (copy.length > 1) {
@@ -43,6 +43,11 @@ export class ListItemComponent implements OnInit{
         this.parsedUrl.text = this.recordItem.url;
       }
     }
+    console.log('onchange: ' + this.parsedUrl)
+
+  }
+
+  ngOnInit(): void {
   }
 
   deleteRecord() {

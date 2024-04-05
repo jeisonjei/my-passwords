@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { AfterViewChecked, Component, EventEmitter, Input, Output } from '@angular/core';
 import { RecordItem } from '../../models/interfaces';
 import { ListItemComponent } from "../list-item/list-item.component";
 
@@ -9,7 +9,8 @@ import { ListItemComponent } from "../list-item/list-item.component";
   styleUrl: './list.component.css',
   imports: [ListItemComponent]
 })
-export class ListComponent {
+export class ListComponent{
   
   @Input() records: RecordItem[] = [];
+
 }
