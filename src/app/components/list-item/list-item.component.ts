@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { RecordItem } from '../../models/interfaces';
 import { RecordService } from '../../services/record.service';
 
@@ -9,7 +9,7 @@ import { RecordService } from '../../services/record.service';
   templateUrl: './list-item.component.html',
   styleUrl: './list-item.component.css'
 })
-export class ListItemComponent {
+export class ListItemComponent implements OnInit{
   copied = false;
   copy(arg0: string) {
     navigator.clipboard.writeText(arg0);
@@ -19,11 +19,40 @@ export class ListItemComponent {
     }, 2000);
   }
   constructor(private recordService: RecordService) { }
+  ngOnInit(): void {
+    var source = this.recordItem.url.split(' ');
+    var copy = Array.from(source);
+    if (copy.length > 1) {
+      if (copy.some(s => this.isLink(s))) {
+        let link = copy.find(s => this.isLink(s));
+        this.parsedUrl.link = link;
+
+        let text = copy.filter(s => !this.isLink(s));
+        this.parsedUrl.text = text.join(' ');
+      }
+      else {
+        this.parsedUrl.text = copy.join(' ');
+      }
+    }
+    else {
+      if (this.isLink(this.recordItem.url)) {
+        this.parsedUrl.link = this.recordItem.url;
+      }
+      else {
+        
+        this.parsedUrl.text = this.recordItem.url;
+      }
+    }
+  }
 
   deleteRecord() {
     this.recordService.delete(this.recordItem);
   }
   @Input() recordItem: RecordItem;
+  parsedUrl = {
+    link: '',
+    text: ''
+  };
   isLink(str) {
     // Regular expression to match URLs
     var urlPattern = /^(http(s)?:\/\/)?(www\.)?[a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/;
