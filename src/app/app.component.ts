@@ -24,7 +24,9 @@ export class AppComponent implements OnInit, AfterViewInit {
   ) { }
 
   @ViewChild('searchElem') searchElem: ElementRef<HTMLInputElement>;
-  @ViewChild('downloadElem') downloadElem: ElementRef<HTMLInputElement>;
+  @ViewChild('downloadButtonElem') downloadButtonElem: ElementRef<HTMLInputElement>;
+  @ViewChild('uploadButtonElem') uploadButtonElem: ElementRef<HTMLInputElement>;
+  @ViewChild('uploadFieldElem') uploadFieldElem: ElementRef<HTMLInputElement>;
   searchKeys: string[] = ['Escape'];
   records: RecordItem[] = [];
   found: RecordItem[] = [];
@@ -45,7 +47,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     document.addEventListener('keydown', this.handleSearchKeydown.bind(this));
     
     // установить высоту кнопки
-    var downloadElemHeight = this.downloadElem.nativeElement.offsetHeight;
+    var downloadElemHeight = this.downloadButtonElem.nativeElement.offsetHeight;
     document.documentElement.style.setProperty('--download-button-height', downloadElemHeight + 'px');
     
   }
@@ -68,7 +70,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
 
   addRecord($event: RecordItem) {
-    this.records = this.recordService.add($event);
+    this.records = this.recordService.addSingle($event);
   }
   search() {
     var nativeElement = this.searchElem.nativeElement;
@@ -95,5 +97,20 @@ export class AppComponent implements OnInit, AfterViewInit {
     
   }
 
-
+  uploadFile() {
+    this.uploadFieldElem.nativeElement.click();
+    this.uploadFieldElem.nativeElement.onchange = () => {
+      var file = this.uploadFieldElem.nativeElement.files[0];
+      var reader = new FileReader();
+      reader.readAsText(file);
+      reader.onload = () => {
+        var json = reader.result as string;
+        var records = JSON.parse(json);
+        this.records = records;
+        this.recordService.deleteAll();
+        this.recordService.addArray(records);
+      }
+  
+    }
+  }
 }

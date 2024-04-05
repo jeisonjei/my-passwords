@@ -11,9 +11,18 @@ export class RecordService {
   list() {
     return JSON.parse(localStorage.getItem('records')) || [];
   }
-  add(record: RecordItem) {
+  addSingle(record: RecordItem) {
     var records = this.list();
     records.push(record);
+    localStorage.setItem('records', JSON.stringify(records));
+
+    this.signal$.next(records);
+    
+    return records;
+  }
+  addArray(recordsArray: RecordItem[]) {
+    var records = this.list();
+    records = records.concat(recordsArray);
     localStorage.setItem('records', JSON.stringify(records));
 
     this.signal$.next(records);
@@ -34,5 +43,10 @@ export class RecordService {
 
     return records;
     
+  }
+  deleteAll() {
+    var records = [];
+    localStorage.setItem('records', JSON.stringify(records));
+    this.signal$.next(records);
   }
 }
