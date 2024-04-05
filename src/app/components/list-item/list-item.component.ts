@@ -43,7 +43,7 @@ export class ListItemComponent implements OnInit, OnChanges {
         this.parsedUrl.text = this.recordItem.url;
       }
     }
-    console.log('onchange: ' + this.parsedUrl)
+    
 
   }
 
