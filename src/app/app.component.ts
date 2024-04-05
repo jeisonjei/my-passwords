@@ -24,6 +24,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   ) { }
 
   @ViewChild('searchElem') searchElem: ElementRef<HTMLInputElement>;
+  @ViewChild('downloadElem') downloadElem: ElementRef<HTMLInputElement>;
   searchKeys: string[] = ['Escape'];
   records: RecordItem[] = [];
   found: RecordItem[] = [];
@@ -42,6 +43,11 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     document.addEventListener('keydown', this.handleSearchKeydown.bind(this));
+    
+    // установить высоту кнопки
+    var downloadElemHeight = this.downloadElem.nativeElement.offsetHeight;
+    document.documentElement.style.setProperty('--download-button-height', downloadElemHeight + 'px');
+    
   }
 
   ngOnDestroy(): void {
@@ -77,5 +83,17 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.searchNow = false;
     }
   }
+  downloadJSON() {
+    var json = JSON.stringify(this.records, null, 2);
+    var blob = new Blob([json], { type: 'application/json' });
+    var url = window.URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'my-passwords.json';
+    a.click();
+    window.URL.revokeObjectURL(url);
+    
+  }
+
 
 }

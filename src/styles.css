@@ -14,6 +14,7 @@
     --header-height:100px;
     --content-padding-bottom: 1rem;
     --grid-padding-top: 1rem;
+    --download-button-height: 0;
 }
 
 .flex {
@@ -212,4 +213,18 @@ input,button{
     color: var(--text);
     font-size: 1.25rem;
     
+}
+
+button{
+    /* height: 2rem; */
+    background-color: var(--slate-dark);
+    color:white;
+    border: solid 1px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+button:hover{
+    cursor: pointer;
+    background-color: var(--slate);
 }

@@ -16,13 +16,8 @@
     max-width: 100%;
     overflow-x: auto;
 }
-.btn:hover{
-    cursor: pointer;
-}
-.transparent{
-    background-color: transparent;
-    border: 0;
-}
+
+
 input{
     height: 1.75rem;   
     caret-color: var(--slate);
@@ -30,14 +25,14 @@ input{
     padding-right: 0.5rem;
     border: solid 1px;
     border-radius: 5px;
-
     
 }
 
+
 .s-flex{
     display: flex;
-    flex-flow: row;
-    align-items: center;
+    flex-flow: column;
+    align-items: end;
 }
 
 
@@ -54,5 +49,10 @@ input{
         display: flex;
         justify-content: center;
     
+    }
+    .s-flex{
+        display: flex;
+        flex-flow: row;
+        align-items: center;
     }
 }
