@@ -106,8 +106,6 @@ export class AppComponent implements OnInit, AfterViewInit {
       reader.onload = () => {
         var json = reader.result as string;
         var records = JSON.parse(json);
-        this.records = records;
-        this.recordService.deleteAll();
         this.recordService.addArray(records);
       }
   

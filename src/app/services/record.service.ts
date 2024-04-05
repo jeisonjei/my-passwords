@@ -23,6 +23,11 @@ export class RecordService {
   addArray(recordsArray: RecordItem[]) {
     var records = this.list();
     records = records.concat(recordsArray);
+    
+    var id = 0;
+    records.forEach(rec => {
+      rec.id = id++;
+    })
     localStorage.setItem('records', JSON.stringify(records));
 
     this.signal$.next(records);
