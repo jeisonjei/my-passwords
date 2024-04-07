@@ -1,3 +1,4 @@
+
 .content{
     padding-left:5%;
     padding-right:5%;
@@ -33,6 +34,11 @@ input{
     display: flex;
     flex-flow: column;
     align-items: end;
+}
+
+.button-flex{
+    display: flex;
+    flex-flow: row;
 }
 
 
