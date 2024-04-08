@@ -1,8 +1,7 @@
 <div class="card">
     <div class="flex jcb mb-1">
 
-        <span><a href="{{parsedUrl.link}}" target="_blank" rel="noopener noreferrer"
-        style="display: block; overflow-x: hidden; text-overflow: ellipsis;">{{parsedUrl.link}}</a> {{parsedUrl.text}}</span>
+        <span class="text-overflow"><a href="{{parsedUrl.link}}" target="_blank" rel="noopener noreferrer">{{parsedUrl.link}}</a> {{parsedUrl.text}}</span>
 
         <button class="btn transparent red" (click)="deleteRecord()">
             <svg width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -16,8 +15,8 @@
             </svg>
         </button>
     </div>
-    <div>{{recordItem.username}}</div>
-    <div class="flex aic">
+    <div class="text-overflow">{{recordItem.username}}</div>
+    <div class="flex aic text-overflow">
         <span #passwordElem>{{recordItem.password}}</span>
         <button class="btn transparent slate" (click)="copy(passwordElem.textContent)">
             <svg width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
