@@ -12,9 +12,10 @@
     --success: #C5EBAA;
 
     --header-height: 100px;
-    --content-padding-bottom: 1rem;
-    --grid-padding-top: 1rem;
+    --content-padding-bottom: 1em;
+    --grid-padding-top: 1em;
     --download-button-height: 0;
+    --input-height: 2rem;
 
     --padding-x: 5%;
 
@@ -23,6 +24,14 @@
     --mdc-dialog-subhead-font: 'Marmelad';
     --mdc-dialog-supporting-text-size: 1em;
     --mdc-dialog-subhead-size: 1.5em;
+
+    box-sizing: border-box;
+}
+
+*,
+::before,
+::after{
+    box-sizing: inherit;
 }
 
 a:link {
@@ -65,124 +74,132 @@ a:active {
 }
 
 .p-025 {
-    padding: 0.25rem;
+    padding: 0.25em;
 }
 
 .p-05 {
-    padding: 0.5rem;
+    padding: 0.5em;
 }
 
 .ms-025 {
-    margin: 0.25rem;
+    margin: 0.25em;
 }
 
 .ms-05 {
-    margin-left: 0.5rem;
+margin-left: 0.5em;
 }
 
 .ms-1 {
-    margin-left: 1rem;
+    margin-left: 1em;
 }
-
+.me-1{
+    margin-right: 1em;
+}
+.me-05{
+    margin-right: .5em;
+}
+.me-025{
+    margin-right: .25em;
+}
 .mx-1 {
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin-left: 1em;
+    margin-right: 1em;
 }
 
 .mx-2 {
-    margin-left: 2rem;
-    margin-right: 2rem;
+    margin-left: 2em;
+    margin-right: 2em;
 }
 
 .mx-3 {
-    margin-left: 3rem;
-    margin-right: 3rem;
+    margin-left: 3em;
+    margin-right: 3em;
 }
 
 .my-1 {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
 }
 
 .my-2 {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-top: 2em;
+    margin-bottom: 2em;
 }
 
 .mt-1 {
-    margin-top: 1rem;
+    margin-top: 1em;
 }
 
 .mt-2 {
-    margin-top: 2rem;
+    margin-top: 2em;
 }
 
 .mt-3 {
-    margin-top: 3rem;
+    margin-top: 3em;
 }
 
 .mt-4 {
-    margin-top: 4rem;
+    margin-top: 4em;
 }
 
 .mt-5 {
-    margin-top: 5rem;
+    margin-top: 5em;
 }
 
 .mb-05 {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.5em;
 }
 
 .mb-1 {
-    margin-bottom: 1rem;
+    margin-bottom: 1em;
 }
 
 .mb-2 {
-    margin-bottom: 2rem;
+    margin-bottom: 2em;
 }
 
 
 .my-3 {
-    margin-top: 3rem;
-    margin-bottom: 3rem;
+    margin-top: 3em;
+    margin-bottom: 3em;
 }
 
 .px-1 {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 1em;
+    padding-right: 1em;
 }
 
 .px-2 {
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-left: 2em;
+    padding-right: 2em;
 }
 
 .px-3 {
-    padding-left: 3rem;
-    padding-right: 3rem;
+    padding-left: 3em;
+    padding-right: 3em;
 }
 
 .py-1 {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 
 .py-2 {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-top: 2em;
+    padding-bottom: 2em;
 }
 
 .py-3 {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    padding-top: 3em;
+    padding-bottom: 3em;
 }
 
 .pb-1 {
-    padding-bottom: 1rem;
+    padding-bottom: 1em;
 }
 
 .pb-05 {
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.5em;
 }
 
 .pacifico-regular {
@@ -255,11 +272,11 @@ button {
 }
 
 input{
-    height: 1.75em;   
+    height: var(--input-height);   
     font-size: 1em;
     caret-color: var(--slate);
-    padding-left: 0.5em;
-    padding-right: 0.5em;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
     border: solid 1px;
     border-radius: 5px;
     
@@ -269,9 +286,10 @@ button {
     font-size: 0.75em;
     background-color: var(--slate-dark);
     color: white;
-    border: solid 1px;
+    border: none;
     border-radius: 5px;
     padding: .5em 1em;
+    max-height: var(--input-height);
 }
 
 button:hover {
@@ -279,5 +297,3 @@ button:hover {
     background-color: var(--slate);
 }
 
-
-html, body { height: 100%; }

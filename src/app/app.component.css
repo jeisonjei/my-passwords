@@ -46,6 +46,9 @@
     margin-left: auto;
     margin-bottom: 0.5rem;
 }
+.btn-upload{
+    margin-bottom: 0.5em;
+}
 
 
 .row-records {
@@ -70,6 +73,12 @@
     .btn-download{
         margin-left: auto;
         margin-bottom: 0rem;
+
+    }
+    .btn-upload{
+        margin-left: 0.25rem;
+        margin-bottom: 0rem;
+
     }
     .col-search {
         flex: 2;

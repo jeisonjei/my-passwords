@@ -1,15 +1,17 @@
-<div mat-dialog-title>
-    Подтвердите перезапись
-    <hr>
-</div>
-
-<mat-dialog-content>
-    <p>ВНИМАНИЕ! Нажатие кнопки "Перезапись" приведёт к удалению всех текущих записей и замене их новыми.</p>
-    <p>Нажатие кнопки "Добавить" приведёт к тому, что к существующим записям добавятся новые, текущие записи при этом останутся</p>
-</mat-dialog-content>
-<mat-dialog-actions>
-    <div class="mx-1">
-        <button class="btn-danger" (click)="rewriteAndClose()" tabindex="-1">Перезаписать</button>
-        <button (click)="addAndClose()">Добавить</button>
+<div class="container">
+    <div mat-dialog-title>
+        Подтвердите перезапись
+        <hr>
     </div>
-</mat-dialog-actions>
+    
+    <mat-dialog-content>
+        <p>ВНИМАНИЕ! Нажатие кнопки "Перезапись" приведёт к удалению всех текущих записей и замене их новыми.</p>
+        <p>Нажатие кнопки "Добавить" приведёт к тому, что к существующим записям добавятся новые, текущие записи при этом останутся</p>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <div class="row-actions">
+            <button class="btn-danger me-025" (click)="rewriteAndClose()" tabindex="-1">Перезаписать</button>
+            <button (click)="addAndClose()">Добавить</button>
+        </div>
+    </mat-dialog-actions>
+</div>
