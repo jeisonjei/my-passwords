@@ -6,24 +6,36 @@ import { RecordItem } from './models/interfaces';
 import { ListComponent } from "./components/list/list.component";
 import { RecordService } from './services/record.service';
 import { FocusDirective } from './directives/focus.directive';
-import { Title } from '@angular/platform-browser';
+import { DomSanitizer, Title } from '@angular/platform-browser';
+import { dialogConfig } from './services/dialogConfig';
 
 // --- material
+import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
+import { download, upload } from './services/svgIcon';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { RewriteConfirmationComponent } from './dialogs/rewrite-confirmation/rewrite-confirmation.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  imports: [RouterOutlet, HeaderComponent, AddFormComponent, ListComponent, FocusDirective]
+  imports: [RouterOutlet, HeaderComponent, AddFormComponent, ListComponent, FocusDirective, MatIconModule, MatDialogModule]
 })
 
 export class AppComponent implements OnInit, AfterViewInit {
 
   constructor(
     private recordService: RecordService,
-    private title: Title
-  ) { }
+    private title: Title,
+    private matRegistry: MatIconRegistry,
+    private sanitizer: DomSanitizer,
+    private dialog: MatDialog
+  ) {
+    this.matRegistry.addSvgIconLiteral('download', this.sanitizer.bypassSecurityTrustHtml(download));
+    this.matRegistry.addSvgIconLiteral('upload', this.sanitizer.bypassSecurityTrustHtml(upload));
+
+   }
 
   @ViewChild('searchElem') searchElem: ElementRef<HTMLInputElement>;
   @ViewChild('downloadButtonElem') downloadButtonElem: ElementRef<HTMLInputElement>;
@@ -41,6 +53,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   // ****************************************************************
   ngOnInit(): void {
+
     this.records = this.recordService.list();
     this.title.setTitle('My Passwords');
   }
@@ -102,13 +115,29 @@ export class AppComponent implements OnInit, AfterViewInit {
   uploadFile() {
     this.uploadFieldElem.nativeElement.click();
     this.uploadFieldElem.nativeElement.onchange = () => {
-      var file = this.uploadFieldElem.nativeElement.files[0];
-      var reader = new FileReader();
+      let file = this.uploadFieldElem.nativeElement.files[0];
+      let reader = new FileReader();
       reader.readAsText(file);
+
       reader.onload = () => {
-        var json = reader.result as string;
-        var records = JSON.parse(json);
-        this.recordService.addArray(records);
+        this.dialog.open(RewriteConfirmationComponent, dialogConfig).afterClosed().subscribe(v => {
+          if (typeof v === 'undefined') {
+            return;
+          }
+          else if (v) {
+            let json = reader.result as string;
+            let records = JSON.parse(json);
+            this.recordService.deleteAll();
+            this.recordService.addArray(records);
+            this.records = this.recordService.list();
+          }
+          else {
+            let json = reader.result as string;
+            let records = JSON.parse(json);
+            this.recordService.addArray(records);
+            this.records = this.recordService.list();
+          }
+        })
       }
   
     }

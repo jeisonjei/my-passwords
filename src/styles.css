@@ -6,9 +6,9 @@
     --text: rgb(50, 50, 50);
     --sand-light: #FBF3D5;
     --light-gray: #D6DAC8;
-    --slate: #9CAFAA;
-    --slate-dark: #708090;
-    --slate-light: #B3C1D1;
+    --slate: rgba(112, 128, 144, 0.75);
+    --slate-dark: rgb(112, 128, 144);
+    --slate-light: rgba(156, 175, 170, 0.5);
     --success: #C5EBAA;
 
     --header-height: 100px;
@@ -17,6 +17,9 @@
     --download-button-height: 0;
 
     --padding-x: 5%;
+
+    --mdc-dialog-supporting-text-font: 'Marmelad';
+    --mdc-dialog-subhead-font: 'Marmelad';
 }
 
 a:link {
@@ -275,4 +278,3 @@ button:hover {
 
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
