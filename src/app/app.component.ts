@@ -120,7 +120,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       reader.readAsText(file);
 
       reader.onload = () => {
-        console.log(this.dialogConfigService.dialogConfig);
+        
         this.dialog.open(RewriteConfirmationComponent, this.dialogConfigService.dialogConfig).afterClosed().subscribe(v => {
           if (typeof v === 'undefined') {
             return;

@@ -9,11 +9,7 @@ import { ListItemComponent } from "../list-item/list-item.component";
   styleUrl: './list.component.css',
   imports: [ListItemComponent]
 })
-export class ListComponent implements OnChanges{
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.records);
-  }
-  
+export class ListComponent{
   @Input() records: RecordItem[] = [];
 
 }

@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { AfterViewChecked, ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { RecordItem } from '../../models/interfaces';
 import { RecordService } from '../../services/record.service';
 
@@ -23,6 +23,12 @@ export class ListItemComponent implements OnInit, OnChanges {
     
     var source = this.recordItem.url.split(' ');
     var copy = Array.from(source);
+
+    this.parsedUrl.link = null;
+    this.parsedUrl.text = null;
+
+
+
     if (copy.length > 1) {
       if (copy.some(s => this.isLink(s))) {
         let link = copy.find(s => this.isLink(s));
@@ -44,11 +50,15 @@ export class ListItemComponent implements OnInit, OnChanges {
         this.parsedUrl.text = this.recordItem.url;
       }
     }
+
+    
+    
     
 
   }
 
   ngOnInit(): void {
+    
   }
 
   deleteRecord() {
@@ -61,7 +71,9 @@ export class ListItemComponent implements OnInit, OnChanges {
   };
   isLink(str) {
     // Regular expression to match URLs
-    var urlPattern = /^(http(s)?:\/\/)?(www\.)?[a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/;
+    var urlPattern = /^(http(s)?:\/\/)?(www\.)?[a-zA-Z0-9@:%._\+~#=-]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)?$/;
+    
+    
 
     // Check if the string matches the URL pattern
     return urlPattern.test(str);
