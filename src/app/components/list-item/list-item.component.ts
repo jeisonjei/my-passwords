@@ -20,6 +20,7 @@ export class ListItemComponent implements OnInit, OnChanges {
   }
   constructor(private recordService: RecordService) { }
   ngOnChanges(changes: SimpleChanges): void {
+    
     var source = this.recordItem.url.split(' ');
     var copy = Array.from(source);
     if (copy.length > 1) {

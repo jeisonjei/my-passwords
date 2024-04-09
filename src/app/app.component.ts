@@ -7,7 +7,7 @@ import { ListComponent } from "./components/list/list.component";
 import { RecordService } from './services/record.service';
 import { FocusDirective } from './directives/focus.directive';
 import { DomSanitizer, Title } from '@angular/platform-browser';
-import { dialogConfig } from './services/dialogConfig';
+import { DialogConfigService } from './services/dialog-config.service';
 
 // --- material
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
@@ -30,7 +30,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     private title: Title,
     private matRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private dialogConfigService: DialogConfigService
   ) {
     this.matRegistry.addSvgIconLiteral('download', this.sanitizer.bypassSecurityTrustHtml(download));
     this.matRegistry.addSvgIconLiteral('upload', this.sanitizer.bypassSecurityTrustHtml(upload));
@@ -93,8 +94,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     if (searchValue) {
       this.searchNow = true;
-      var found = this.records.filter(rec => rec.url.toLowerCase().includes(searchValue.toLowerCase()));
-      this.found = found;
+      this.found = this.records.filter(rec => rec.url.toLowerCase().includes(searchValue.toLowerCase()));
     }
     else {
       this.searchNow = false;
@@ -120,7 +120,8 @@ export class AppComponent implements OnInit, AfterViewInit {
       reader.readAsText(file);
 
       reader.onload = () => {
-        this.dialog.open(RewriteConfirmationComponent, dialogConfig).afterClosed().subscribe(v => {
+        console.log(this.dialogConfigService.dialogConfig);
+        this.dialog.open(RewriteConfirmationComponent, this.dialogConfigService.dialogConfig).afterClosed().subscribe(v => {
           if (typeof v === 'undefined') {
             return;
           }

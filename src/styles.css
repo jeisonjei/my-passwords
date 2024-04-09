@@ -18,8 +18,11 @@
 
     --padding-x: 5%;
 
+    /* material overrides */
     --mdc-dialog-supporting-text-font: 'Marmelad';
     --mdc-dialog-subhead-font: 'Marmelad';
+    --mdc-dialog-supporting-text-size: 1em;
+    --mdc-dialog-subhead-size: 1.5em;
 }
 
 a:link {
