@@ -3,9 +3,11 @@
   <div class="flex-grid">
     <div class="col-form">
       <app-add-form (onSubmit)="addRecord($event)"></app-add-form>
-      <div class="mt-5">
+      <div class="blog mt-5">
         <p>8 апреля, 10:25 Мам, долетел нормально, здесь немного прохладно, но теплее чем в Москве</p>
-        <img src="assets/img/2024-04-08 12-02-45.JPG" width="40%" alt="">
+        <img src="assets/img/imgonline-com-ua-Compressed-uob5V3FvtVc9Qqbn.jpg" width="40%" alt="">
+        <p>10 апреля, 18:14 Вот какой верблюд</p>
+        <img src="assets/img/imgonline-com-ua-CompressBySize-HznmxxJ2zzWkhLfO.jpg" width="40%" alt="">
       </div>
     </div>
     <div class="col-search">
@@ -13,21 +15,23 @@
         <div class="input">
           <input placeholder="Поиск..." #searchElem type="text" name="search" id="" (input)="search()">
         </div>
-        <div class="info">
-          Всего {{records.length}} ссылок
-        </div>
-        <div class="btn-download">
-          <button #downloadButtonElem (click)="downloadJSON()" class="flex aic">
-            <!-- <mat-icon svgIcon="download"></mat-icon> -->
-            <span class="ms-05">Скачать</span>
-          </button>
-        </div>
-        <div class="btn-upload">
-          <button #uploadButtonElem (click)="uploadFile()" class="flex aic">
-            <!-- <mat-icon svgIcon="upload"></mat-icon> -->
-            <span class="ms-05">Загрузить</span>
-          </button>
-          <input type="file" #uploadFieldElem hidden="true">
+        <div class="buttons">
+          <div class="info">
+            Всего {{records.length}} ссылок
+          </div>
+          <div class="btn-download">
+            <button #downloadButtonElem (click)="downloadJSON()" class="flex aic">
+              <!-- <mat-icon svgIcon="download"></mat-icon> -->
+              <span class="ms-05">Скачать</span>
+            </button>
+          </div>
+          <div class="btn-upload">
+            <button #uploadButtonElem (click)="uploadFile()" class="flex aic">
+              <!-- <mat-icon svgIcon="upload"></mat-icon> -->
+              <span class="ms-05">Загрузить</span>
+            </button>
+            <input type="file" #uploadFieldElem hidden="true">
+          </div>
         </div>
       </div>
       <div class="row-records">
