@@ -80,8 +80,12 @@
         margin-bottom: 0rem;
 
     }
+    .col-form{
+        flex:1;
+        max-width: calc((100vw - (var(--padding-x) * 2)) * 1 / 3) ;
+    }
     .col-search {
         flex: 2;
-        max-width: calc(100vw - var(--padding-x) * 2) * 2 / 3;
+        max-width: calc((100vw - (var(--padding-x) * 2)) * 2 / 3) ;
     }
 }
