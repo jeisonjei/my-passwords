@@ -1,15 +1,15 @@
 <div #form>
     <div class="grid mb-05">
         <label for="url">Ссылка</label>
-        <input placeholder="Ссылка и описание... Enter" #urlElem type="text" name="url" id="" [value]="url" (input)="assignUrl($event)" appFocus>
+        <input placeholder="Ссылка, описание... Enter" #urlElem type="text" name="url" id="" [value]="url" (input)="assignUrl($event)" appFocus>
     </div>
     <div class="grid mb-05">
         <label for="username">Логин</label>
-        <input type="text" name="username" id="" [value]="username" (input)="assignUsername($event)">
+        <input placeholder="Логин..." type="text" name="username" id="" [value]="username" (input)="assignUsername($event)">
     </div>
     <div class="grid mb-05">
         <label for="password">Пароль</label>
-        <input type="text" name="password" id="" [value]="password" (input)="assignPassword($event)">
+        <input placeholder="Пароль..." type="text" name="password" id="" [value]="password" (input)="assignPassword($event)">
     </div>
     <div class="grid mb-1">
         <div></div>
