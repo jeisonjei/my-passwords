@@ -1,5 +1,6 @@
 import { AfterContentChecked, AfterViewChecked, AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
+import FontFaceObserver from 'fontfaceobserver';
 
 @Component({
   selector: 'app-header',
@@ -13,13 +14,17 @@ export class HeaderComponent implements AfterViewInit {
   @ViewChild('headerElem') headerElem: ElementRef<HTMLDivElement>;
   ngAfterViewInit(): void {
     // действительная высота элемента известна только после применения шрифтов
-    var resizeObserver = new ResizeObserver(entries => {
-      var header = this.headerElem.nativeElement;
-      var headerHeight = header.offsetHeight+'px';
-      document.documentElement.style.setProperty('--header-height', headerHeight);      
-    });
-
-    resizeObserver.observe(this.headerElem.nativeElement);
+    var font = new FontFaceObserver('Pacifico');
+    console.log(font);
+    font.load().then(() => {
+      var resizeObserver = new ResizeObserver(entries => {
+        var header = this.headerElem.nativeElement;
+        var headerHeight = header.offsetHeight+'px';
+        document.documentElement.style.setProperty('--header-height', headerHeight);      
+      });
+  
+      resizeObserver.observe(this.headerElem.nativeElement);      
+    })
   }
 
 }
