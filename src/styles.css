@@ -11,7 +11,7 @@
     --slate-light: rgba(156, 175, 170, 0.5);
     --success: #C5EBAA;
 
-    --header-height: 100px;
+    --header-height: 0;
     --form-height: 0;
     --row-search-height: 0;
     --content-padding-bottom: 1em;

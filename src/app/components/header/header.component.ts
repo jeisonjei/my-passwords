@@ -13,12 +13,9 @@ export class HeaderComponent implements AfterViewInit {
   @ViewChild('headerElem') headerElem: ElementRef<HTMLDivElement>;
   ngAfterViewInit(): void {
     // действительная высота элемента известна только после применения шрифтов
-    setTimeout(() => {
-      var header = this.headerElem.nativeElement;
-      var headerHeight = header.offsetHeight+'px';
-      document.documentElement.style.setProperty('--header-height', headerHeight);
-      
-    }, 100);
+    var header = this.headerElem.nativeElement;
+    var headerHeight = header.offsetHeight+'px';
+    document.documentElement.style.setProperty('--header-height', headerHeight);
   }
 
 }
