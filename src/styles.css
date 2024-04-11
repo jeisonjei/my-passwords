@@ -285,16 +285,17 @@ input{
 
 button {
     font-size: 0.75em;
+    text-transform: uppercase;
     background-color: var(--slate-dark);
     color: white;
     border: none;
     border-radius: 5px;
     padding: .5em 1em;
     max-height: var(--input-height);
+    cursor: pointer;
 }
 
 button:hover {
-    cursor: pointer;
     background-color: var(--slate);
 }
 
