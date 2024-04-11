@@ -1,4 +1,4 @@
-import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild, viewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./components/header/header.component";
 import { AddFormComponent } from "./components/add-form/add-form.component";
@@ -42,6 +42,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('downloadButtonElem') downloadButtonElem: ElementRef<HTMLInputElement>;
   @ViewChild('uploadButtonElem') uploadButtonElem: ElementRef<HTMLInputElement>;
   @ViewChild('uploadFieldElem') uploadFieldElem: ElementRef<HTMLInputElement>;
+  @ViewChild('rowSearch') rowSearchElem!: ElementRef<HTMLElement>;
   searchKeys: string[] = ['Escape'];
   records: RecordItem[] = [];
   found: RecordItem[] = [];
@@ -62,10 +63,15 @@ export class AppComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     document.addEventListener('keydown', this.handleSearchKeydown.bind(this));
     
-    // установить высоту кнопки
-    var downloadElemHeight = this.downloadButtonElem.nativeElement.offsetHeight;
-    document.documentElement.style.setProperty('--download-button-height', downloadElemHeight + 'px');
-    
+    // передать в :root высоту строки с полем поиска
+    var resizeObserver = new ResizeObserver(entries => {
+      var rowSearchHeight = this.rowSearchElem.nativeElement.offsetHeight;
+      document.documentElement.style.setProperty('--row-search-height', rowSearchHeight + 'px');
+      
+    });
+
+    resizeObserver.observe(this.rowSearchElem.nativeElement);
+
   }
 
   ngOnDestroy(): void {

@@ -1,7 +1,7 @@
 
 @media (min-width:740px){
     .list{
-        height: calc(100vh - var(--header-height) - var(--grid-padding-top) - var(--content-padding-bottom) - 3rem - var(--download-button-height));
+        height: calc(100vh - var(--header-height) - var(--grid-padding-top) - var(--content-padding-bottom) - var(--row-search-height) - 1em);
         overflow-y: auto;
     }
 }
