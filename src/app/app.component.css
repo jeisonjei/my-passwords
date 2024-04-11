@@ -17,43 +17,49 @@
 }
 
 .col-form {
-    
+
     flex: 1;
+
 }
 
 .col-search {
-    
+
     flex: 1;
     max-width: calc(100vw - var(--padding-x) * 2);
 }
 
 .row-search {
-    
+
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     margin-bottom: 1em;
     align-items: end;
 }
-.buttons{
+
+.buttons {
     margin-left: auto;
     display: flex;
     align-items: center;
 }
-.buttons>*+*{
+
+.buttons>*+* {
     margin-left: 0.25em;
 }
 
-.input{
+.input {
     margin-bottom: 0.5rem;
 }
-.info{
+
+.info {
     margin-bottom: 0.5rem;
 }
-.btn-download{
+
+.btn-download {
     margin-bottom: 0.5rem;
 }
-.btn-upload{
+
+.btn-upload {
     margin-bottom: 0.5em;
 }
 
@@ -61,65 +67,78 @@
 .row-records {
     flex-grow: 1;
 }
-.blog{
-    height:500px;
+
+.blog {
+    height: calc(100vh - var(--header-height) - var(--grid-padding-top) - var(--form-height) - var(--content-padding-bottom) - 1em);
     overflow-y: auto;
 }
 
 @media (min-width: 740px) and (max-width:960px) {
-    .flex-grid{
+    .flex-grid {
         flex-direction: row;
     }
-    .row-search{
+
+    .row-search {
         flex-wrap: wrap-reverse;
     }
-    .input{
+
+    .input {
         margin-bottom: .5rem;
     }
-    .info{
+
+    .info {
         margin-bottom: .5em;
     }
-    .col-form{
-        flex:1;
-        max-width: calc((100vw - (var(--padding-x) * 2)) * 1 / 3) ;
+
+    .col-form {
+        flex: 1;
+        max-width: calc((100vw - (var(--padding-x) * 2)) * 1 / 3);
     }
+
     .col-search {
         flex: 2;
-        max-width: calc((100vw - (var(--padding-x) * 2)) * 2 / 3) ;
+        max-width: calc((100vw - (var(--padding-x) * 2)) * 2 / 3);
     }
 }
 
 @media (min-width: 961px) {
-    .flex-grid{
+    .flex-grid {
         flex-direction: row;
     }
-    .row-search{
+
+    .row-search {
         flex-direction: row;
         align-items: center;
     }
-    .input{
+
+    .input {
         margin-bottom: 0rem;
     }
-    .info{
+
+    .info {
         margin-left: 1rem;
         margin-right: 1rem;
         margin-bottom: 0;
     }
-    .btn-download{
+
+    .btn-download {
         margin-bottom: 0rem;
 
     }
-    .btn-upload{
+
+    .btn-upload {
         margin-left: 0.25rem;
         margin-bottom: 0rem;
 
     }
-    .col-form{
-        flex:1;
-        max-width: calc((100vw - (var(--padding-x) * 2)) * 1 / 3) ;
+
+    .col-form {
+        flex: 1;
+        max-width: calc((100vw - (var(--padding-x) * 2)) * 1 / 3);
     }
+
     .col-search {
         flex: 2;
-        max-width: calc((100vw - (var(--padding-x) * 2)) * 2 / 3) ;
+        max-width: calc((100vw - (var(--padding-x) * 2)) * 2 / 3);
     }
 }

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, OnDestroy, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, OnDestroy, Output, ViewChild, viewChild } from '@angular/core';
 import { FocusDirective } from '../../directives/focus.directive';
 import { RecordItem } from '../../models/interfaces';
 import { UniqueIDService } from '../../services/unique-id.service';
@@ -12,6 +12,7 @@ import { UniqueIDService } from '../../services/unique-id.service';
 })
 export class AddFormComponent implements AfterViewInit, OnDestroy {
   constructor(private id: UniqueIDService) { }
+  @ViewChild('form') form!: ElementRef<HTMLElement>;
   assignUsername($event: Event) {
     this.username = ($event.target as HTMLInputElement).value;
   }
@@ -21,10 +22,17 @@ export class AddFormComponent implements AfterViewInit, OnDestroy {
   }
   ngAfterViewInit(): void {
     document.addEventListener('keydown', this.handleEnterKeydown.bind(this));
+
+
+    var resizeObserver = new ResizeObserver(entries => {
+      let formHeight = this.form.nativeElement.offsetHeight;
+      document.documentElement.style.setProperty('--form-height', formHeight+'px');
+    });
+    resizeObserver.observe(this.form.nativeElement);
   }
   handleEnterKeydown(event: KeyboardEvent): void {
     if (event.key === 'Enter') {
-      if (document.activeElement !== this.urlElem.nativeElement && this.urlElem.nativeElement.value==='') {
+      if (document.activeElement !== this.urlElem.nativeElement && this.urlElem.nativeElement.value === '') {
         this.urlElem.nativeElement.focus();
       }
       else {
