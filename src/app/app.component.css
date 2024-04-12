@@ -57,6 +57,7 @@
 
 .btn-download {
     margin-bottom: 0.5rem;
+    margin-left: .25rem;
 }
 
 .btn-upload {
@@ -105,6 +106,7 @@
     }
 
 
+
 }
 
 @media (min-width: 961px) {
@@ -129,6 +131,7 @@
 
     .btn-download {
         margin-bottom: 0rem;
+        margin-left: .25rem;
 
     }
 
