@@ -54,6 +54,10 @@ a:active {
     height: 100%;
 }
 
+.flex-wrap{
+    flex-wrap: wrap;
+}
+
 .jcs {
     justify-content: start;
 }

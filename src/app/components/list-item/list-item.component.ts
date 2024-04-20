@@ -11,6 +11,7 @@ import { RecordService } from '../../services/record.service';
 })
 export class ListItemComponent implements OnInit, OnChanges {
   copied = false;
+  copiedUsername: any;
   copy(arg0: string) {
     navigator.clipboard.writeText(arg0);
     this.copied = true;
@@ -18,9 +19,16 @@ export class ListItemComponent implements OnInit, OnChanges {
       this.copied = false;
     }, 2000);
   }
+  copyUsername(arg0: string) {
+    navigator.clipboard.writeText(arg0);
+    this.copiedUsername = true;
+    setTimeout(() => {
+      this.copiedUsername = false;
+    }, 2000);
+  }
   constructor(private recordService: RecordService) { }
   ngOnChanges(changes: SimpleChanges): void {
-    
+
     var source = this.recordItem.url.split(' ');
     var copy = Array.from(source);
 
@@ -46,19 +54,19 @@ export class ListItemComponent implements OnInit, OnChanges {
         this.parsedUrl.link = this.recordItem.url;
       }
       else {
-        
+
         this.parsedUrl.text = this.recordItem.url;
       }
     }
 
-    
-    
-    
+
+
+
 
   }
 
   ngOnInit(): void {
-    
+
   }
 
   deleteRecord() {
@@ -72,8 +80,8 @@ export class ListItemComponent implements OnInit, OnChanges {
   isLink(str) {
     // Regular expression to match URLs
     var urlPattern = /^(http(s)?:\/\/)?(www\.)?[a-zA-Z0-9@:%._\+~#=-]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)?$/;
-    
-    
+
+
 
     // Check if the string matches the URL pattern
     return urlPattern.test(str);
