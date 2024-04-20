@@ -16,7 +16,7 @@
         </button>
     </div>
     @if(recordItem.username){
-        <div class="flex aic text-overflow flex-wrap">
+        <div class="flex aic flex-wrap">
             <span class="text-overflow">{{recordItem.username}}</span>
             <button class="btn transparent slate" (click)="copyUsername(recordItem.username)">
                 <svg width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -31,8 +31,8 @@
 
     }
     @if(recordItem.password){
-        <div class="flex aic text-overflow flex-wrap">
-            <span #passwordElem>{{recordItem.password}}</span>
+        <div class="flex aic flex-wrap">
+            <span #passwordElem class="text-overflow">{{recordItem.password}}</span>
             <button class="btn transparent slate" (click)="copy(passwordElem.textContent)">
                 <svg width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                     stroke-linecap="round" stroke-linejoin="round">
