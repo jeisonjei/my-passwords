@@ -16,7 +16,7 @@ export class HeaderComponent implements AfterViewInit {
     // действительная высота элемента известна только после применения шрифтов
     var font = new FontFaceObserver('Pacifico');
     
-    font.load().finally(() => {
+    font.load(null, 250).finally(() => {
       var resizeObserver = new ResizeObserver(entries => {
         var header = this.headerElem.nativeElement;
         var headerHeight = header.offsetHeight + 'px';
