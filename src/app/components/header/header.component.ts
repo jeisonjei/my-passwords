@@ -15,16 +15,16 @@ export class HeaderComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     // действительная высота элемента известна только после применения шрифтов
     var font = new FontFaceObserver('Pacifico');
-    console.log(font);
-    font.load().then(() => {
+    
+    font.load().finally(() => {
       var resizeObserver = new ResizeObserver(entries => {
         var header = this.headerElem.nativeElement;
-        var headerHeight = header.offsetHeight+'px';
-        document.documentElement.style.setProperty('--header-height', headerHeight);      
+        var headerHeight = header.offsetHeight + 'px';
+        document.documentElement.style.setProperty('--header-height', headerHeight);
       });
-  
-      resizeObserver.observe(this.headerElem.nativeElement);      
-    })
+
+      resizeObserver.observe(this.headerElem.nativeElement);
+    });
   }
 
 }
